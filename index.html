@@ -12,7 +12,7 @@
 
     <link rel="icon" href="favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <meta name="description" content="Cecropia's The Hall VR in A-Frame">
+    <meta name="description" content="MOBGEN:Lab VR">
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -55,15 +55,18 @@
 
       <a-entity mobile></a-entity>
       <a-entity environment="preset: threetowers;"></a-entity>
-      <a-entity position="-6.606 2.014 -0.726" rotation="-6.245239966925973 -2.9220847551671985 100.09572680935483" scale="1 -0.575 0.356" light="color:#a8a8a9;distance:3.35;decay:0.23;type:point"></a-entity>
+      <a-entity position="-6.606 2.014 -0.726" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
+      <a-entity position="6.134 2.893 0" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
       <!-- - Custom components with animations -->
-
+      <a-text value="Trained By Machines, a short film. The film aims to provoke questions about the direction technology is leading us. " position="3.631 1.946 1.966" width="1" color="#fff" rotation="0 -179.2784940964346 0"></a-text>
       <a-assets>
         <a-mixin id="checkpoint"></a-mixin>
         <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
 
-        <video id="acropolis-texture" muted autoplay loop="true" src="img/trainedbymachines.mp4"></video>
+        <video id="trained-texture" muted autoplay loop="true" src="img/trainedbymachines.mp4"></video>
         <video id="moonlight-texture" muted autoplay loop="true" src="img/cryptomusic.mov"></video>
+        <video id="smartify-texture" muted autoplay loop="true" src="img/smartify.mp4"></video>
+        <video id="kickbob-texture" muted autoplay loop="true" src="img/kickbob.mp4"></video>
 
         <img id="sky_sphere-texture" src="img/sky_sphere.jpg">
 
@@ -72,7 +75,9 @@
 
         <!-- floor -->
         <a-asset-item id="floor-obj" src="models/floor.obj"></a-asset-item>
-        
+        <a-asset-item id="engine-obj" src="models/Engine.obj"></a-asset-item>
+        <img id="engine-texture" src="textures/metal-texture.jpg">
+
         <img id="floor-texture" src="textures/floor.jpg">
         <img id="floor_normal-texture" src="textures/floor_normal.jpg">
         <!-- - floor -->
@@ -91,7 +96,7 @@
 
         <!-- acropolis -->
         <a-asset-item id="acropolis-obj" src="models/acropolis.obj"></a-asset-item>
-        <!-- <img id="acropolis-texture" src="textures/acropolis.jpg"> -->
+        <img id="acropolis-texture" src="textures/acropolis.jpg">
         <!-- - acropolis -->
 
         <!-- castle_lake -->
@@ -107,6 +112,9 @@
         <video id="mintplant-texture" muted autoplay loop="true" src="img/mintplant.mp4"></video>
 
         <!-- - mintplant -->
+        <a-asset-item id="box-obj" src="models/bxglvsp.obj"></a-asset-item>
+        <a-asset-item id="box-mtl" src="models/bxglvsp.mtl"></a-asset-item>
+        <a-asset-item id="box" src="models/box.gltf"></a-asset-item>
 
         <!-- moonlight -->
         <a-asset-item id="moonlight-obj" src="models/moonlight.obj"></a-asset-item>
@@ -167,11 +175,16 @@
       <a-entity  obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" id="floor-2" position="0 0.02 0" rotation="0 90 0" scale="1.88 1 1"></a-entity>  
       <a-entity obj-model="obj: #hall-obj;" material="src: #hall_normal-texture" id="hall"></a-entity>
       <a-entity obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor"></a-entity>
-      <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture"></a-entity>
-      <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture"></a-entity>
+      <a-entity obj-model="obj: #acropolis-obj;" material="src: #trained-texture"></a-entity>
+      <a-entity obj-model="obj: #acropolis-obj;" material="src: #kickbob-texture" position="2.024 -0.289 9.684" rotation="0 90.18355695359158 0"></a-entity>
+      <a-entity obj-model="obj:models/acropolis.obj" material="src:#acropolis-texture" position="4.561 1.194 -1.884" rotation="0 -148.96902673401405 0" scale="0.285 0.285 0.285"></a-entity>      <a-entity obj-model="obj: #acropolis-obj;" material="src: #smartify-texture" position="9.445 0.496 0.109" rotation="0 -179.8514518915654 0" scale="0.918 1.031 1.031"></a-entity>
+      <a-entity obj-model="obj: #moonlight-obj;" material=""></a-entity>
+      <a-entity obj-model="obj: #engine-obj;" material="src: #engine-texture" scale="0.02 0.02 0.02" position="-3.017 0.545 4.523"></a-entity>
+      <a-entity position="-2.782 2.367 4.446" rotation="0 86.00096504913655 0" text__klm="width:2;value:KLM Hololens Project"></a-entity>
       <a-entity geometry="primitive:plane" material="shader:gif;src:#lab-texture" position="0 3.501 -1.954"></a-entity>
       <a-entity geometry="primitive:plane" material="shader:gif;src:#lab-texture" position="0 3.501 -1.999" rotation="0 180.02333923010465 0"></a-entity>
       <a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture"></a-entity>
+      <a-gltf-model src="#box" position="3.68 2.474 7.361" material="shader: flat; color: red"  rotation="0 0 77.23471078363498" scale="0.78 0.78 0.78"></a-gltf-model>
       <a-entity obj-model="obj:models/castle_lake.obj" material="src: #mintplant-texture" position="-4.465 0 -1.966" rotation="0 -180.02333923010465 0" scale="1 1 0"></a-entity>
       <a-entity gltf-model="models/indoor_plant/scene.gltf" position="-5.972 1.41 -1.637" scale="0.15 0.1 0.15"></a-entity>  
       <a-entity gltf-model="models/indoor_plant/scene.gltf" position="-3.013 1.41 -1.637" scale="0.15 0.1 0.15"></a-entity> 
@@ -196,7 +209,6 @@
       <!--<a-entity obj-model="obj: #monk_uv-obj;" material="src: #monk_uv-texture"></a-entity>-->
 
       <!--<a-entity obj-model="obj: #david_bike_hall_3-obj;" material="src: #david_bike_hall_3-texture"></a-entity>-->
-
 
 
       <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="left"></a-entity>
