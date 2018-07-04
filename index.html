@@ -96,6 +96,11 @@
 <img id="doug-texture" src="models/20_Bust_obj/model_texture.jpg">
 <a-asset-item id="ting-obj" src="models/29_Bust_obj/model_mesh.obj"></a-asset-item>
 <img id="ting-texture" src="models/29_Bust_obj/model_texture.jpg">
+<a-asset-item id="lisa-obj" src="models/30_Bust_obj/model_mesh.obj"></a-asset-item>
+<img id="lisa-texture" src="models/30_Bust_obj/model_texture.jpg">
+
+<a-asset-item id="nat-obj" src="models/32_Bust_obj/model_mesh.obj"></a-asset-item>
+<img id="nat-texture" src="models/32_Bust_obj/model_texture.jpg">
         <!-- hall low floor -->
         <!-- this piece is only meant for teleportation -->
         <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
@@ -106,6 +111,10 @@
         <a-asset-item id="acropolis-obj" src="models/acropolis.obj"></a-asset-item>
         <img id="acropolis-texture" src="textures/acropolis.jpg">
         <!-- - acropolis -->
+
+        <!-- iPHONE -->
+        <a-asset-item id="phone-obj" src="models/IPhoneSE1.dae"></a-asset-item>
+        <img id="phone-texture" src="textures/iphone.jpeg">
 
         <!-- castle_lake -->
         <a-asset-item id="castle_lake-obj" src="models/castle_lake.obj"></a-asset-item>
@@ -185,8 +194,11 @@
       <a-entity obj-model="obj: #magno-obj;" material="src: #magno-texture" id="magno" position="-2.346 1.16 -3.678" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
       <a-entity obj-model="obj: #tom-obj;" material="src: #tom-texture" id="tom" position="-2.321 1.16 -6.296" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
       <a-entity obj-model="obj: #doug-obj;" material="src: #doug-texture" id="doug" position="-2.348 1.16 -4.939" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-      <a-entity obj-model="obj: #ting-obj;" material="src: #ting-texture" id="ting" position="-2.348 1.16 -7.778" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-
+      
+      <a-entity obj-model="obj: #ting-obj;" material="src: #ting-texture" id="ting" position="-2.348 1.16 -7.778" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479">
+      </a-entity>
+      <a-entity obj-model="obj: #lisa-obj;" material="src: #lisa-texture" id="lisa" position="-2.348 1.16 -9.339" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
+      <a-entity obj-model="obj: #nat-obj;" material="src: #nat-texture" id="nat" position="-2.348 1.16 -10.439" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
       <a-entity obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor"></a-entity>
       <a-entity obj-model="obj: #acropolis-obj;" material="src: #trained-texture"></a-entity>
       <a-entity obj-model="obj: #acropolis-obj;" material="src: #kickbob-texture" position="2.024 -0.289 9.684" rotation="0 90.18355695359158 0"></a-entity>
@@ -202,12 +214,7 @@
       <a-entity obj-model="obj:models/castle_lake.obj" material="src: #mintplant-texture" position="-4.465 0 -1.966" rotation="0 -180.02333923010465 0" scale="1 1 0"></a-entity>
       <a-entity gltf-model="models/indoor_plant/scene.gltf" position="-5.972 1.41 -1.637" scale="0.15 0.1 0.15"></a-entity>  
       <a-entity gltf-model="models/indoor_plant/scene.gltf" position="-3.013 1.41 -1.637" scale="0.15 0.1 0.15"></a-entity> 
-        <a-animation attribute="rotation"
-               dur="10000"
-               fill="forwards"
-               to="0 360 0"
-               repeat="indefinite"></a-animation>
-      </a-entity>
+    
       <!-- <a-entity obj-model="obj:models/boxwood_plant_obj/boxwood_plant.obj" material="alphaTest:0.87;src:models/boxwood_plant_obj/boxwood_plant.mtl" scale="0.001 0.001 0.001" position="-5.972 1.41 -1.637"></a-entity> -->
 
       <!--<a-entity obj-model="obj: #greek_bust-obj;" material="src: #greek_bust-texture"></a-entity>-->
