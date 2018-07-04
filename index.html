@@ -53,11 +53,11 @@
 
     <a-scene>
 
-      <a-entity mobile></a-entity>
-      <a-entity environment="preset: threetowers;"></a-entity>
+      <a-entity mobile="" position="0 1.161 0"></a-entity>
+      <a-entity position="0 6.162 0" light="color:#8d8c8d;type:ambient"></a-entity>
       <a-entity position="-6.606 2.014 -0.726" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
       <a-entity position="6.134 2.893 0" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
-      <!-- - Custom components with animations -->
+      <!-- - Cusmagno components with animations -->
       <a-text value="Trained By Machines, a short film. The film aims to provoke questions about the direction technology is leading us. " position="3.631 1.946 1.966" width="1" color="#fff" rotation="0 -179.2784940964346 0"></a-text>
       <a-assets>
         <a-mixin id="checkpoint"></a-mixin>
@@ -68,7 +68,7 @@
         <video id="smartify-texture" muted autoplay loop="true" src="img/smartify.mp4"></video>
         <video id="kickbob-texture" muted autoplay loop="true" src="img/kickbob.mp4"></video>
 
-        <img id="sky_sphere-texture" src="img/sky_sphere.jpg">
+        <img id="sky" src="img/lab.jpg">
 
 
 
@@ -87,7 +87,15 @@
         <img id="hall-texture" src="textures/hall.jpg">
         <img id="hall_normal-texture" src="textures/wall.jpg">
         <!-- - hall -->
-
+<!-- Tom -->
+<a-asset-item id="tom-obj" src="models/19_Bust_obj/model_mesh.obj"></a-asset-item>
+<img id="tom-texture" src="models/19_Bust_obj/model_texture.jpg">
+<a-asset-item id="magno-obj" src="models/18_Bust_obj/model_mesh.obj"></a-asset-item>
+<img id="magno-texture" src="models/18_Bust_obj/model_texture.jpg">
+<a-asset-item id="doug-obj" src="models/20_Bust_obj/model_mesh.obj"></a-asset-item>
+<img id="doug-texture" src="models/20_Bust_obj/model_texture.jpg">
+<a-asset-item id="ting-obj" src="models/29_Bust_obj/model_mesh.obj"></a-asset-item>
+<img id="ting-texture" src="models/29_Bust_obj/model_texture.jpg">
         <!-- hall low floor -->
         <!-- this piece is only meant for teleportation -->
         <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
@@ -168,17 +176,23 @@
         <!-- - mocaps -->
 
       </a-assets>
+      <a-entity environment="preset: osiris; groundColor: #445; grid: cross"></a-entity>
 
-  
       <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" position="0 0.01 0" id="floor"></a-entity>
       <!-- <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" id="floor2"></a-entity> -->
       <a-entity  obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" id="floor-2" position="0 0.02 0" rotation="0 90 0" scale="1.88 1 1"></a-entity>  
       <a-entity obj-model="obj: #hall-obj;" material="src: #hall_normal-texture" id="hall"></a-entity>
+      <a-entity obj-model="obj: #magno-obj;" material="src: #magno-texture" id="magno" position="-2.346 1.16 -3.678" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
+      <a-entity obj-model="obj: #tom-obj;" material="src: #tom-texture" id="tom" position="-2.321 1.16 -6.296" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
+      <a-entity obj-model="obj: #doug-obj;" material="src: #doug-texture" id="doug" position="-2.348 1.16 -4.939" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
+      <a-entity obj-model="obj: #ting-obj;" material="src: #ting-texture" id="ting" position="-2.348 1.16 -7.778" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
+
       <a-entity obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor"></a-entity>
       <a-entity obj-model="obj: #acropolis-obj;" material="src: #trained-texture"></a-entity>
       <a-entity obj-model="obj: #acropolis-obj;" material="src: #kickbob-texture" position="2.024 -0.289 9.684" rotation="0 90.18355695359158 0"></a-entity>
-      <a-entity obj-model="obj:models/acropolis.obj" material="src:#acropolis-texture" position="4.561 1.194 -1.884" rotation="0 -148.96902673401405 0" scale="0.285 0.285 0.285"></a-entity>      <a-entity obj-model="obj: #acropolis-obj;" material="src: #smartify-texture" position="9.445 0.496 0.109" rotation="0 -179.8514518915654 0" scale="0.918 1.031 1.031"></a-entity>
-      <a-entity obj-model="obj: #moonlight-obj;" material=""></a-entity>
+      <a-entity obj-model="obj:models/acropolis.obj" material="src:#acropolis-texture" position="4.561 1.194 -1.884" rotation="0 -148.96902673401405 0" scale="0.285 0.285 0.285"></a-entity>   
+      <a-entity obj-model="obj: #acropolis-obj;" material="src: #smartify-texture" position="9.445 0.496 0.109" rotation="0 -179.8514518915654 0" scale="0.918 1.031 1.031"></a-entity>
+      <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture"></a-entity>
       <a-entity obj-model="obj: #engine-obj;" material="src: #engine-texture" scale="0.02 0.02 0.02" position="-3.017 0.545 4.523"></a-entity>
       <a-entity position="-2.782 2.367 4.446" rotation="0 86.00096504913655 0" text__klm="width:2;value:KLM Hololens Project"></a-entity>
       <a-entity geometry="primitive:plane" material="shader:gif;src:#lab-texture" position="0 3.501 -1.954"></a-entity>
