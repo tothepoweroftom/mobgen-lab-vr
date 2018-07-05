@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Cecropia's The Hall VR in A-Frame</title>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cecropia's The Hall VR in A-Frame</title>
 
 
 
@@ -10,237 +11,366 @@
 
 
 
-    <link rel="icon" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <meta name="description" content="MOBGEN:Lab VR">
+  <link rel="icon" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+  <meta name="description" content="MOBGEN:Lab VR">
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
-    <script src="js/aframe.0.7.0.min.js"></script>
-    <script src="js/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script> 
-    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
-    <script src="js/lzma.js"></script>
-    <script src="js/ctm.js"></script>
-    <script src="js/CTMLoader.js"></script>
-    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+  <script src="js/aframe.0.7.0.min.js"></script>
+  <script src="js/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  <script src="js/lzma.js"></script>
+  <script src="js/ctm.js"></script>
+  <script src="js/CTMLoader.js"></script>
+  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+  <script src="js/canvas-updater.js"></script>
+  <script src="js/canvas_interface.js"></script>
 
-    <script src="js/aframe-teleport-controls.min.js"></script>
-    <script src="js/spheres_anim.js"></script>
-    <script src="js/anim_1.js"></script>
-    <script src="js/anim_2.js"></script>
-    <script src="js/envMapMaterial.js"></script>
-    <script src="js/ctm_component.js"></script>
-    <script src="js/mobile_component.js"></script>
+  <script src="js/aframe-teleport-controls.min.js"></script>
+  <script src="js/spheres_anim.js"></script>
+  <script src="js/anim_1.js"></script>
+  <script src="js/anim_2.js"></script>
+  <script src="js/envMapMaterial.js"></script>
+  <script src="js/ctm_component.js"></script>
+  <script src="js/mobile_component.js"></script>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div id="container" class="container">
-      <div class="info">
-        <div class="title">MOBGEN:Lab</div>
-        <a class="button" id="start_experience" href="#">start experience</a>
-        <div class="instructions">
-          <div><strong>VR</strong>: Hand controllers and teleport with trigger.</div>
-          <div><strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse.</div>
-          <div><strong>Mobile</strong>: Gaze cursor and teleportation.</div>
-        </div>
+  <div id="container" class="container">
+    <div class="info">
+      <div class="title">MOBGEN:Lab</div>
+      <a class="button" id="start_experience" href="#">start experience</a>
+      <div class="instructions">
+        <div>
+          <strong>VR</strong>: Hand controllers and teleport with trigger.</div>
+        <div>
+          <strong>Desktop</strong>: Keyboard (WASD/arrows) and mouse.</div>
+        <div>
+          <strong>Mobile</strong>: Gaze cursor and teleportation.</div>
       </div>
     </div>
+  </div>
 
-    <!--<a-scene stats>-->
+  <!--<a-scene stats>-->
 
-    <a-scene>
+  <a-scene>
 
-      <a-entity mobile="" position="0 1.161 0"></a-entity>
-      <a-entity position="0 6.162 0" light="color:#8d8c8d;type:ambient"></a-entity>
-      <a-entity position="-6.606 2.014 -0.726" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
-      <a-entity position="6.134 2.893 0" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
-      <!-- - Cusmagno components with animations -->
-      <a-text value="Trained By Machines, a short film. The film aims to provoke questions about the direction technology is leading us. " position="3.631 1.946 1.966" width="1" color="#fff" rotation="0 -179.2784940964346 0"></a-text>
-      <a-assets>
-        <a-mixin id="checkpoint"></a-mixin>
-        <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
+    <a-entity mobile="" position="0 1.161 0"></a-entity>
+    <a-entity position="0 6.162 0" light="color:#8d8c8d;type:ambient"></a-entity>
+    <a-entity position="-6.606 2.014 -0.726" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
+    <a-entity position="6.134 2.893 0" rotation="9.11002894258009 -179.73686033253924 0.057295779513082325" light="decay:-0.29;intensity:0.17;distance:0.18;color:#fff074;type:point"></a-entity>
+    <!-- - Cusmagno components with animations -->
+    <a-text value="A short film. The film aims to provoke questions about the direction technology is leading us. "
+      position="3.631 2.646 1.966" width="1.5"  color="#444" rotation="0 -179.2784940964346 0"></a-text>
+      <a-text value="Trained By Machines, " position="3.631 2.932 1.966" width="1" font=" https://cdn.aframe.io/fonts/Monoid.fnt" color="#444" rotation="0 -179.2784940964346 0" text="width:3.02;color:#000000;height:1.5;letterSpacing:1.51;lineHeight:0.41;tabSize:5.0600000000000005;value:Trained By Machines"></a-text>
+      <a-text position="-2.527 3.33 1.938" width="1" font=" https://cdn.aframe.io/fonts/Monoid.fnt" color="#444" rotation="0 180.02333923010465 0" text="color:#000000;font:https://cdn.aframe.io/fonts/Monoid.fnt;height:1.5;letterSpacing:1.51;lineHeight:0.41;tabSize:5.0600000000000005;value:Cryptomusic;width:3.02"></a-text>  
+      <a-entity position="-3.501 2.654 1.962" rotation="0 180 0" text__crypto="color:#000000;value:Crypto Music is a research project by Tom Power undertaken while at MOBGEN:Lab. The aim of this project is to create an art project from Bitcoin transactions. The website blockchain.com provides an open api websocket to listen to real time bitcoin transactions.  Each transaction triggers a new particle system in the visualisation and a new note in the audio.;width:1.98"></a-entity>    <a-assets>
+      <a-mixin id="checkpoint"></a-mixin>
+      <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
 
-        <video id="trained-texture" muted autoplay loop="true" src="img/trainedbymachines.mp4"></video>
-        <video id="moonlight-texture" muted autoplay loop="true" src="img/cryptomusic.mov"></video>
-        <video id="smartify-texture" muted autoplay loop="true" src="img/smartify.mp4"></video>
-        <video id="kickbob-texture" muted autoplay loop="true" src="img/kickbob.mp4"></video>
+      <video id="trained-texture" muted autoplay loop="true" src="img/trainedbymachines.mp4"></video>
+      <video id="moonlight-texture" muted autoplay loop="true" src="img/cryptomusic.mov"></video>
+      <video id="smartify-texture" muted autoplay loop="true" src="img/smartify.mp4"></video>
+      <video id="kickbob-texture" muted autoplay loop="true" src="img/kickbob.mp4"></video>
 
-        <img id="sky" src="img/lab.jpg">
-
-
-
-
-        <!-- floor -->
-        <a-asset-item id="floor-obj" src="models/floor.obj"></a-asset-item>
-        <a-asset-item id="engine-obj" src="models/Engine.obj"></a-asset-item>
-        <img id="engine-texture" src="textures/metal-texture.jpg">
-
-        <img id="floor-texture" src="textures/floor.jpg">
-        <img id="floor_normal-texture" src="textures/floor_normal.jpg">
-        <!-- - floor -->
-
-        <!-- hall -->
-        <a-asset-item id="hall-obj" src="models/hall.obj"></a-asset-item>
-        <img id="hall-texture" src="textures/hall.jpg">
-        <img id="hall_normal-texture" src="textures/wall.jpg">
-        <!-- - hall -->
-<!-- Tom -->
-<a-asset-item id="tom-obj" src="models/19_Bust_obj/model_mesh.obj"></a-asset-item>
-<img id="tom-texture" src="models/19_Bust_obj/model_texture.jpg">
-<a-asset-item id="magno-obj" src="models/18_Bust_obj/model_mesh.obj"></a-asset-item>
-<img id="magno-texture" src="models/18_Bust_obj/model_texture.jpg">
-<a-asset-item id="doug-obj" src="models/20_Bust_obj/model_mesh.obj"></a-asset-item>
-<img id="doug-texture" src="models/20_Bust_obj/model_texture.jpg">
-<a-asset-item id="ting-obj" src="models/29_Bust_obj/model_mesh.obj"></a-asset-item>
-<img id="ting-texture" src="models/29_Bust_obj/model_texture.jpg">
-<a-asset-item id="lisa-obj" src="models/30_Bust_obj/model_mesh.obj"></a-asset-item>
-<img id="lisa-texture" src="models/30_Bust_obj/model_texture.jpg">
-
-<a-asset-item id="nat-obj" src="models/32_Bust_obj/model_mesh.obj"></a-asset-item>
-<img id="nat-texture" src="models/32_Bust_obj/model_texture.jpg">
-        <!-- hall low floor -->
-        <!-- this piece is only meant for teleportation -->
-        <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
-
-        <!-- - hall low floor-->
-
-        <!-- acropolis -->
-        <a-asset-item id="acropolis-obj" src="models/acropolis.obj"></a-asset-item>
-        <img id="acropolis-texture" src="textures/acropolis.jpg">
-        <!-- - acropolis -->
-
-        <!-- iPHONE -->
-        <a-asset-item id="phone-obj" src="models/IPhoneSE1.dae"></a-asset-item>
-        <img id="phone-texture" src="textures/iphone.jpeg">
-
-        <!-- castle_lake -->
-        <a-asset-item id="castle_lake-obj" src="models/castle_lake.obj"></a-asset-item>
-        <img id="castle_lake-texture" src="textures/castle_lake.jpg">
-        <!-- - castle_lake -->
-        <a-asset-item id="lab-obj" src="models/castle_lake.obj"></a-asset-item>
-        <img id="lab-texture" src="img/lab-logo.gif">
-
-
-        <!-- mintplant -->
-        <a-asset-item id="mintplant-obj" src="models/castle_lake.obj"></a-asset-item>
-        <video id="mintplant-texture" muted autoplay loop="true" src="img/mintplant.mp4"></video>
-
-        <!-- - mintplant -->
-        <a-asset-item id="box-obj" src="models/bxglvsp.obj"></a-asset-item>
-        <a-asset-item id="box-mtl" src="models/bxglvsp.mtl"></a-asset-item>
-        <a-asset-item id="box" src="models/box.gltf"></a-asset-item>
-
-        <!-- moonlight -->
-        <a-asset-item id="moonlight-obj" src="models/moonlight.obj"></a-asset-item>
-        <!-- - moonlight -->
-
-        <!-- podiums -->
-        <a-asset-item id="podiums-obj" src="models/podiums.obj"></a-asset-item>
-        <img id="podiums-texture" src="textures/podiums.jpg">
-        <!-- - podiums -->
-
-        <!-- lamps -->
-        <a-asset-item id="lamps-obj" src="models/lamps.obj"></a-asset-item>
-        <img id="lamps-texture" src="textures/lamps.jpg">
-        <!-- - lamps -->
-
-        <!-- david -->
-        <!--<a-asset-item id="david-obj" src="models/david.obj"></a-asset-item>-->
-        <a-asset-item id="david-ctm" src="models/david.ctm"></a-asset-item>
-        <!--<img id="david-texture" src="textures/david.jpg">-->
-        <!-- - david -->
-
-        <!-- female_head -->
-        <a-asset-item id="female_head-obj" src="models/boxwood_plant_obj/boxwood_plant.obj" ></a-asset-item>
-        <!-- <a-asset-item id="female_head-ctm" src="models/female_head.ctm"></a-asset-item> -->
-        <!--<img id="female_head-texture" src="textures/female_head.jpg">-->
-        <!-- - female_head -->
-        <a-asset-item id="plant" src="models/indoor_plant/scene.gltf"></a-asset-item>
-        <!-- lion -->
-        <!--<a-asset-item id="lion-obj" src="models/lion.obj"></a-asset-item>-->
-     
-        <!--<img id="greek_bust-texture" src="textures/greek_bust.jpg">-->
-        <!-- - greek_bust -->
-
-        <!-- old_man -->
-        <!--<a-asset-item id="old_man-obj" src="models/old_man.obj"></a-asset-item>-->
-
-        <!--<img id="old_man-texture" src="textures/old_man.jpg">-->
-        <!-- - old_man -->
-
-        <!-- nefertiti -->
-        <!-- - nefertiti -->
-
- 
-        <!-- fractal_3 -->
-        <a-asset-item id="supershape" src="models/colored.obj"></a-asset-item>
-        <!--<img id="fractal_3-texture" src="textures/fractal_3.jpg">-->
-        <!-- - fractal_3 -->
+      <img id="sky" src="img/lab.jpg">
 
 
 
-        <!-- - mocaps -->
 
-      </a-assets>
-      <a-entity environment="preset: osiris; groundColor: #445; grid: cross"></a-entity>
+      <!-- floor -->
+      <a-asset-item id="floor-obj" src="models/floor.obj"></a-asset-item>
+      <a-asset-item id="engine-obj" src="models/Engine.obj"></a-asset-item>
+      <img id="engine-texture" src="textures/metal-texture.jpg">
+      <img id="interface-texture" src="textures/interface.jpg">
 
-      <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" position="0 0.01 0" id="floor"></a-entity>
-      <!-- <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" id="floor2"></a-entity> -->
-      <a-entity  obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" id="floor-2" position="0 0.02 0" rotation="0 90 0" scale="1.88 1 1"></a-entity>  
-      <a-entity obj-model="obj: #hall-obj;" material="src: #hall_normal-texture" id="hall"></a-entity>
-      <a-entity obj-model="obj: #magno-obj;" material="src: #magno-texture" id="magno" position="-2.346 1.16 -3.678" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-      <a-entity obj-model="obj: #tom-obj;" material="src: #tom-texture" id="tom" position="-2.321 1.16 -6.296" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-      <a-entity obj-model="obj: #doug-obj;" material="src: #doug-texture" id="doug" position="-2.348 1.16 -4.939" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-      
-      <a-entity obj-model="obj: #ting-obj;" material="src: #ting-texture" id="ting" position="-2.348 1.16 -7.778" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479">
-      </a-entity>
-      <a-entity obj-model="obj: #lisa-obj;" material="src: #lisa-texture" id="lisa" position="-2.348 1.16 -9.339" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-      <a-entity obj-model="obj: #nat-obj;" material="src: #nat-texture" id="nat" position="-2.348 1.16 -10.439" rotation="0 92.41809235460178 0" scale="1.479 1.479 1.479"></a-entity>
-      <a-entity obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor"></a-entity>
-      <a-entity obj-model="obj: #acropolis-obj;" material="src: #trained-texture"></a-entity>
-      <a-entity obj-model="obj: #acropolis-obj;" material="src: #kickbob-texture" position="2.024 -0.289 9.684" rotation="0 90.18355695359158 0"></a-entity>
-      <a-entity obj-model="obj:models/acropolis.obj" material="src:#acropolis-texture" position="4.561 1.194 -1.884" rotation="0 -148.96902673401405 0" scale="0.285 0.285 0.285"></a-entity>   
-      <a-entity obj-model="obj: #acropolis-obj;" material="src: #smartify-texture" position="9.445 0.496 0.109" rotation="0 -179.8514518915654 0" scale="0.918 1.031 1.031"></a-entity>
-      <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture"></a-entity>
-      <a-entity obj-model="obj: #engine-obj;" material="src: #engine-texture" scale="0.02 0.02 0.02" position="-3.017 0.545 4.523"></a-entity>
-      <a-entity position="-2.782 2.367 4.446" rotation="0 86.00096504913655 0" text__klm="width:2;value:KLM Hololens Project"></a-entity>
-      <a-entity geometry="primitive:plane" material="shader:gif;src:#lab-texture" position="0 3.501 -1.954"></a-entity>
-      <a-entity geometry="primitive:plane" material="shader:gif;src:#lab-texture" position="0 3.501 -1.999" rotation="0 180.02333923010465 0"></a-entity>
-      <a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture"></a-entity>
-      <a-gltf-model src="#box" position="3.68 2.474 7.361" material="shader: flat; color: red"  rotation="0 0 77.23471078363498" scale="0.78 0.78 0.78"></a-gltf-model>
-      <a-entity obj-model="obj:models/castle_lake.obj" material="src: #mintplant-texture" position="-4.465 0 -1.966" rotation="0 -180.02333923010465 0" scale="1 1 0"></a-entity>
-      <a-entity gltf-model="models/indoor_plant/scene.gltf" position="-5.972 1.41 -1.637" scale="0.15 0.1 0.15"></a-entity>  
-      <a-entity gltf-model="models/indoor_plant/scene.gltf" position="-3.013 1.41 -1.637" scale="0.15 0.1 0.15"></a-entity> 
-    
-      <!-- <a-entity obj-model="obj:models/boxwood_plant_obj/boxwood_plant.obj" material="alphaTest:0.87;src:models/boxwood_plant_obj/boxwood_plant.mtl" scale="0.001 0.001 0.001" position="-5.972 1.41 -1.637"></a-entity> -->
+      <img id="floor-texture" src="textures/floor.jpg">
+      <img id="floor_normal-texture" src="textures/floor_normal.jpg">
+      <!-- - floor -->
 
-      <!--<a-entity obj-model="obj: #greek_bust-obj;" material="src: #greek_bust-texture"></a-entity>-->
-      <!-- <a-entity ctm="src: #greek_bust-ctm; :greek_bust;"></a-entity> -->
+      <!-- hall -->
+      <a-asset-item id="hall-obj" src="models/hall.obj"></a-asset-item>
+      <img id="hall-texture" src="textures/hall.jpg">
+      <img id="hall_normal-texture" src="textures/wall.jpg">
+      <!-- - hall -->
+      <!-- Tom -->
+      <a-asset-item id="tom-obj" src="models/19_Bust_obj/model_mesh.obj"></a-asset-item>
+      <img id="tom-texture" src="models/19_Bust_obj/model_texture.jpg">
+      <a-asset-item id="magno-obj" src="models/18_Bust_obj/model_mesh.obj"></a-asset-item>
+      <img id="magno-texture" src="models/18_Bust_obj/model_texture.jpg">
+      <a-asset-item id="doug-obj" src="models/20_Bust_obj/model_mesh.obj"></a-asset-item>
+      <img id="doug-texture" src="models/20_Bust_obj/model_texture.jpg">
+      <a-asset-item id="ting-obj" src="models/29_Bust_obj/model_mesh.obj"></a-asset-item>
+      <img id="ting-texture" src="models/29_Bust_obj/model_texture.jpg">
+      <a-asset-item id="lisa-obj" src="models/30_Bust_obj/model_mesh.obj"></a-asset-item>
+      <img id="lisa-texture" src="models/30_Bust_obj/model_texture.jpg">
 
-      <!--<a-entity obj-model="obj: #old_man-obj;" material="src: #old_man-texture"></a-entity>-->
+      <a-asset-item id="nat-obj" src="models/32_Bust_obj/model_mesh.obj"></a-asset-item>
+      <img id="nat-texture" src="models/32_Bust_obj/model_texture.jpg">
+      <!-- hall low floor -->
+      <!-- this piece is only meant for teleportation -->
+      <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
 
-      <!-- <a-entity ctm="src: #nefertiti-ctm; name:nefertiti;"></a-entity> -->
+      <canvas id="helloWorldCanvas" crossOrigin="anonymous"></canvas>
+      <!-- acropolis -->
+      <a-asset-item id="acropolis-obj" src="models/acropolis.obj"></a-asset-item>
 
+      <img id="acropolis-texture" src="textures/acropolis.jpg">
+      <!-- - acropolis -->
+
+      <!-- iPHONE -->
+      <a-asset-item id="phone-obj" src="models/IPhoneSE1.dae"></a-asset-item>
+
+      <img id="phone-texture" src="textures/iphone.jpeg">
+
+      <!-- castle_lake -->
+      <a-asset-item id="castle_lake-obj" src="models/castle_lake.obj"></a-asset-item>
+
+      <img id="castle_lake-texture" src="textures/castle_lake.jpg">
+      <!-- - castle_lake -->
+      <a-asset-item id="lab-obj" src="models/castle_lake.obj"></a-asset-item>
+
+      <img id="lab-texture" src="img/lab-logo.gif">
+
+      <!-- mintplant -->
+      <a-asset-item id="mintplant-obj" src="models/castle_lake.obj"></a-asset-item>
+
+      <video id="mintplant-texture" muted autoplay loop="true" src="img/mintplant.mp4"></video>
+      <!-- - mintplant -->
+      <a-asset-item id="box-obj" src="models/bxglvsp.obj"></a-asset-item>
+
+      <a-asset-item id="box-mtl" src="models/bxglvsp.mtl"></a-asset-item>
+
+      <a-asset-item id="box" src="models/box.gltf"></a-asset-item>
+
+      <a-asset-item id="moonlight-obj" src="models/moonlight.obj"></a-asset-item>
+
+      <a-asset-item id="podiums-obj" src="models/podiums.obj"></a-asset-item>
+
+      <img id="podiums-texture" src="textures/podiums.jpg">
+
+      <a-asset-item id="lamps-obj" src="models/lamps.obj"></a-asset-item>
+
+      <img id="lamps-texture" src="textures/lamps.jpg">
   
-      <!--<a-entity obj-model="obj: #female_helmet-obj;" material="src: #female_helmet-texture"></a-entity>-->
+      <a-asset-item id="david-ctm" src="models/david.ctm"></a-asset-item>
 
-      <!--<a-entity obj-model="obj: #monk_uv-obj;" material="src: #monk_uv-texture"></a-entity>-->
+      <a-asset-item id="female_head-obj" src="models/boxwood_plant_obj/boxwood_plant.obj"></a-asset-item>
 
-      <!--<a-entity obj-model="obj: #david_bike_hall_3-obj;" material="src: #david_bike_hall_3-texture"></a-entity>-->
+      <a-asset-item id="plant" src="models/indoor_plant/scene.gltf"></a-asset-item>
+
+      <a-asset-item id="supershape" src="models/colored.obj"></a-asset-item>
 
 
-      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="left"></a-entity>
-      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="right"></a-entity>
 
-    </a-scene>
+      <!-- - mocaps -->
 
-    <script src="main.js"></script>
+    </a-assets>
 
- 
 
-  </body>
+
+    <a-entity environment="preset: osiris; groundColor: #445; grid: cross"></a-entity>
+
+    <a-entity
+      obj-model="obj: #floor-obj;"
+      material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2" 
+      position="0 0.01 0"
+      id="floor">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #floor-obj;"
+      material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.2"
+      id="floor-2"
+      position="0 0.02 0"
+      rotation="0 90 0"
+      scale="1.88 1 1">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #hall-obj;" 
+      material="src: #hall_normal-texture"
+      id="hall">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #magno-obj;"
+      material="src: #magno-texture"
+      id="magno"
+      position="-2.346 1.16 -3.678"
+      rotation="0 92.41809235460178 0"
+      scale="1.479 1.479 1.479">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #tom-obj;" 
+      material="src: #tom-texture"
+      id="tom"
+      position="-2.321 1.16 -6.296"
+      rotation="0 92.41809235460178 0"
+      scale="1.479 1.479 1.479">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #doug-obj;" 
+      material="src: #doug-texture"
+      id="doug"
+      position="-2.348 1.16 -4.939"
+      rotation="0 92.41809235460178 0"
+      scale="1.479 1.479 1.479">
+    </a-entity>
+
+    <a-plane
+      src="#interface-texture"
+      position="2.721 0.628 11.633"
+      rotation="-88.23550045014677 160.82925309322206 109.14845997242183"
+      scale="1.667 0.772 0.772">
+    </a-plane>
+
+    <a-entity 
+      obj-model="obj: #ting-obj;" 
+      material="src: #ting-texture" id="ting" position="-2.348 1.16 -7.778" rotation="0 92.41809235460178 0"
+      scale="1.479 1.479 1.479">
+    </a-entity>
+    <a-entity 
+      obj-model="obj: #lisa-obj;" 
+      material="src: #lisa-texture" id="lisa" position="-2.348 1.16 -9.339" rotation="0 92.41809235460178 0"
+      scale="1.479 1.479 1.479"></a-entity>
+    <a-entity 
+      obj-model="obj: #nat-obj;" 
+      material="src: #nat-texture" id="nat" position="-2.348 1.16 -10.439" rotation="0 92.41809235460178 0"
+      scale="1.479 1.479 1.479"></a-entity>
+
+    <!-- <a-collada-model src="#phone-obj"></a-collada-model> -->
+    <a-entity 
+      obj-model="obj: #hall_low_floor-obj;"
+      material="opacity: 0.0" 
+      id="hall_low_floor"><
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #acropolis-obj;"
+      material="src: #trained-texture">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #acropolis-obj;"
+      material="src: #kickbob-texture" 
+      position="2.024 -0.289 9.684" 
+      rotation="0 90.18355695359158 0">
+    </a-entity>
+
+    <a-entity obj-model="obj:models/acropolis.obj"
+      material="src:#acropolis-texture"
+      position="4.561 1.194 -1.884"
+      rotation="0 -148.96902673401405 0"
+      scale="0.285 0.285 0.285">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #acropolis-obj;" 
+      material="src: #smartify-texture" 
+      position="9.445 0.496 0.109" 
+      rotation="0 -179.8514518915654 0"
+      scale="0.918 1.031 1.031">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #moonlight-obj;"
+      material="src: #moonlight-texture">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #engine-obj;"
+      material="src: #engine-texture" 
+      scale="0.02 0.02 0.02" 
+      position="-3.017 0.545 4.523">
+    </a-entity>
+
+    <a-entity 
+      position="-2.782 2.367 4.446" 
+
+      rotation="0 86.00096504913655 0" 
+      text__klm="width:4; font: https://cdn.aframe.io/fonts/Monoid.fnt; value:KLM Hololens Project; color: #444">
+    </a-entity>
+
+    <a-entity 
+      geometry="primitive:plane" 
+      material="shader:gif;src:#lab-texture" 
+      position="0 3.501 -1.954">
+    </a-entity>
+
+    <a-entity 
+      geometry="primitive:plane" 
+      material="shader:gif;src:#lab-texture" 
+      position="0 3.501 -1.999" 
+      rotation="0 180.02333923010465 0">
+    </a-entity>
+
+    <a-entity 
+      obj-model="obj: #podiums-obj;" 
+      material="src: #podiums-texture">
+    </a-entity>
+
+    <a-gltf-model 
+      src="#box" 
+      position="3.68 2.474 7.361" 
+      material="shader: flat; color: red" 
+      rotation="0 0 77.23471078363498"
+      scale="0.78 0.78 0.78">
+    </a-gltf-model>
+
+    <a-entity 
+      obj-model="obj:models/castle_lake.obj" 
+      material="src: #mintplant-texture" 
+      position="-4.465 0 -1.966" 
+      rotation="0 -180.02333923010465 0"
+      scale="1 1 0">
+    </a-entity>
+
+    <a-entity 
+      gltf-model="models/indoor_plant/scene.gltf" 
+      position="-5.972 1.41 -1.637" 
+      scale="0.15 0.1 0.15">
+    </a-entity>
+
+    <a-entity 
+      gltf-model="models/indoor_plant/scene.gltf"  
+      position="-3.013 1.41 -1.637" 
+      scale="0.15 0.1 0.15">
+    </a-entity>
+
+    <a-entity 
+      material="shader: flat; src: #helloWorldCanvas" 
+      geometry="primitive: plane; width: 160; height: 90" 
+      position="3.836 1.573 11.394"
+      rotation="0 -90 0" 
+      canvas-updater scale="0.017 0.015 0.009" 
+      draw-canvas-rectangles="#helloWorldCanvas">
+    </a-entity>
+
+    <a-entity position="1.896 3.133 13.395" rotation="0 -180 0" text__tangible="font:monoid;value:Tangible Interfaces;width:4;color:#0c0c0c"></a-entity>
+    <a-entity position="2.898 2.557 13.395" rotation="0 -180 0" text__tangible="value:Aims to explore the digital \n meets physical world. A physical \n controller made with conductive paint \n controls a digital visualisation.;width:2;tabSize:5;color:#0c0c0c"></a-entity>
+    <a-entity 
+      teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" 
+      hand-controls="left">
+    </a-entity>
+
+    <a-entity 
+      teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" 
+      hand-controls="right">
+    </a-entity>
+
+  </a-scene>
+
+  <script src="main.js"></script>
+
+
+
+</body>
 
 </html>

@@ -7,8 +7,8 @@ AFRAME.registerComponent('anim_1', {
 
 
 		var geometry = new THREE.SphereBufferGeometry(spotScale, 4, 2),
-			//material = new THREE.MeshPhongMaterial( {color: 0xFFFFFF, envMap: envMap} ),
-			material = new THREE.MeshLambertMaterial( {color: 0xFFFFFF} ),
+			material = new THREE.MeshPhongMaterial( {color: 0xFFFFFF, envMap: envMap} ),
+			// material = new THREE.MeshLambertMaterial( {color: 0xFFFFFF} ),
 			baseSpot = new THREE.Mesh( geometry, material ),
 			spot;
 
