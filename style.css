@@ -27,6 +27,10 @@ a:link, a:hover, a:visited, a:active {
     justify-content: center;
     margin-top: 15%;
 }
+.image {
+    width: 200px;
+    height:200px;
+}
 
 .info{
 	font-family: Arial;
