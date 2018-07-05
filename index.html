@@ -28,8 +28,8 @@
 
     <script src="js/aframe-teleport-controls.min.js"></script>
     <script src="js/spheres_anim.js"></script>
-    <script src="js/anim_1.js"></script>
-    <script src="js/anim_2.js"></script>
+    <script src="js/proximity.js"></script>
+
     <script src="js/envMapMaterial.js"></script>
     <script src="js/ctm_component.js"></script>
     <script src="js/mobile_component.js"></script>
@@ -61,7 +61,8 @@
 
     <a-scene>
 
-        <a-entity mobile></a-entity>
+        <a-entity mobile ></a-entity>
+        <a-camera id="camera"></a-camera>
         <a-entity position="0 6.162 0"
             light="color:#8d8c8d;type:ambient"></a-entity>
         <a-entity position="-6.606 2.014 -0.726"
@@ -308,7 +309,8 @@
             scale="1.479 1.479 1.479">
         </a-entity>
 
-        <a-plane src="#interface-texture"
+        <a-plane src="#interface-texture" 
+            id="interface"
             position="2.721 0.628 11.633"
             rotation="-88.23550045014677 160.82925309322206 109.14845997242183"
             scale="1.667 0.772 0.772">
@@ -424,7 +426,7 @@
                     rotation="0 -90 0"
                     canvas-updater
                     scale="0.017 0.015 0.009"
-                    draw-canvas-rectangles="#helloWorldCanvas">
+                    draw-canvas-rectangles="canvas: #helloWorldCanvas; target: #camera; thresold: 2.8">
                 </a-entity>
 
                 <a-entity position="1.896 3.133 13.395"

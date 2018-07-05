@@ -7,16 +7,21 @@
 
 
 AFRAME.registerComponent('draw-canvas-rectangles', {
-    schema: {type: 'selector'},
-
+    schema: {
+      canvas: {type: 'selector'},
+      target: {type: 'selector'},
+      threshold: {type: 'number'}
+    },
     
   
     init: function () {
-      var canvas = this.canvas = this.data;
+      var canvas = this.canvas = this.data.canvas;
       this.step = -4;
       var ctx = this.ctx = canvas.getContext('2d');
       ctx.fillStyle = 'rgb(0, 0, 0)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      this.directionVec3 = new THREE.Vector3();
+
     },
   
     tick: function (t) {
@@ -25,13 +30,25 @@ AFRAME.registerComponent('draw-canvas-rectangles', {
       var x;
       var y;
       var hue = t / 10;
+
+      var directionVec3 = this.directionVec3;
+  
+      // Grab position vectors (THREE.Vector3) from the entities' three.js objects.
+      var targetPosition = this.data.target.object3D.position;
+      var currentPosition = this.el.object3D.position;
+  
+      // Subtract the vectors to get the direction the entity should head in.
+      directionVec3.copy(targetPosition).sub(currentPosition);
+  
+      // Calculate the distance.
   
       // Bottom layer rectangle.
       ctx.fillStyle = 'rgb(0, 0, 0)';
 
       this.ctx.fillRect(0, 0, canvas.width, canvas.height);
-      this.plotSine(ctx, this.step, 50);
-      this.step += 1;
+      this.plotSine(ctx, this.step,50,25-directionVec3.length()*2);
+      this.step += 2;
+
 
       if (this.step > canvas.width*10) {
      
@@ -51,7 +68,7 @@ AFRAME.registerComponent('draw-canvas-rectangles', {
         ctx.stroke();
     },
 
-    plotSine(ctx, xOffset, yOffset) {
+    plotSine(ctx, xOffset, yOffset, amplitude) {
         var width = ctx.canvas.width;
         var height = ctx.canvas.height;
         var scale = 20;
@@ -63,7 +80,6 @@ AFRAME.registerComponent('draw-canvas-rectangles', {
         
         var x = 4;
         var y = 0;
-        var amplitude = 40;
         var frequency = 20;
         //ctx.moveTo(x, y);
         ctx.moveTo(x, 50);
