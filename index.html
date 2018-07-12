@@ -15,7 +15,7 @@
         type="text/css"
         href="style.css">
 
-    <script src="js/aframe.0.7.0.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="js/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-room-component/dist/aframe-room-component.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
@@ -41,7 +41,8 @@
         class="container">
         <div class="info">
             <!-- <div class="title">MOBGEN:Lab</div> -->
-              <img class="image" src="img/lab-logo.gif">
+            <img class="image"
+                src="img/lab-logo.gif">
             <a class="button"
                 id="start_experience"
                 href="#">start experience</a>
@@ -60,7 +61,7 @@
 
     <a-scene>
 
-        <a-entity mobile ></a-entity>
+        <a-entity mobile></a-entity>
         <a-camera id="camera"></a-camera>
         <a-entity position="0 6.162 0"
             light="color:#8d8c8d;type:ambient"></a-entity>
@@ -265,14 +266,13 @@
 
         <a-sky src="#sky"></a-sky>
         <a-entity obj-model="obj: #floor-obj;"
-        material="color: #333333; transparent: true; opacity: 0.95"
+            material="color: #333333; transparent: true; opacity: 0.95"
             position="0 0.01 0"
             id="floor">
         </a-entity>
 
         <a-entity obj-model="obj: #floor-obj;"
-        material="color: #333333; transparent: true; opacity: 0.95"
-
+            material="color: #333333; transparent: true; opacity: 0.95"
             id="floor-2"
             position="0 0.02 0"
             rotation="0 90 0"
@@ -308,7 +308,7 @@
             scale="1.479 1.479 1.479">
         </a-entity>
 
-        <a-plane src="#interface-texture" 
+        <a-plane src="#interface-texture"
             id="interface"
             position="2.721 0.628 11.633"
             rotation="-88.23550045014677 160.82925309322206 109.14845997242183"
